@@ -23,11 +23,14 @@ class NewsTest extends TestCase
    **/
     public function testAuthorError(): void
     {
-        $addon = new News();
-        $addon->setAuthor(new Name("Lopes Gabriel"));
-        $this->assertEquals(
-            $addon->getAuthor(),
-            "Gabriel Lopes"
-        );
+        $author = new News();
+        try {
+            $author->setAuthor(new Name("SpriteOnTheRock_lets"));
+        } catch (Exception $e) {
+            $this->assertEquals(
+                $e->getMessage(),
+                "Text must be four characters and not more then twenty."
+            );
+        }
     }
 }

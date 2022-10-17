@@ -6,5 +6,11 @@ namespace App\Application\UseCase\saveNews;
 
 interface OutputBoundaryDTO
 {
-    public function getNews(): string;
+    public function getArticle(): string;
+
+    public function getAuthor(): string;
+
+    public function getTitle(): string;
+
+    public function getDateTime(): string;
 }

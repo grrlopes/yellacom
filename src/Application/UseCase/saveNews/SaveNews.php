@@ -16,12 +16,17 @@ final class SaveNews implements InputBoundaryDTO
         $this->repository = $repository;
     }
 
-    public function execute(News $news)
+    public function execute(News $news): string
     {
         $create = $this->repository->saveNews(
             array(
               "author" => (string)$news->getAuthor(),
+              "title" => (string)$news->getTitle(),
+              "article" => (string)$news->getArticle(),
+              "datetime" => (string)$news->getDatetime(),
             )
         );
+        echo $create->getAuthor();
+        return $create->getAuthor();
     }
 }

@@ -9,6 +9,12 @@
       "role": "Developer"
     }
   ],
+  "scripts": {
+    "test": [
+      "./vendor/bin/phpunit --colors=always --testdox"
+    ],
+    "cover": "./vendor/bin/phpunit tests/ --colors=always --testdox --coverage-html coverage"
+  },
   "minimum-stability": "dev",
   "require": {
     "php": "8.1.11"

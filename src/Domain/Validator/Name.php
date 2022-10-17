@@ -15,7 +15,7 @@ final class Name
         $this->name = $name;
         if (!$this->validate($this->name)) {
             throw new DomainException(
-                "Text must be four characters and not more then twelve."
+                "Text must be four characters and not more then twenty."
             );
         }
         return $this->name;
@@ -26,7 +26,7 @@ final class Name
         $parse = str_replace(array( '\'', '"', ',' , ';', '<', '>' ), ' ', $name);
         $parsed = filter_var($parse, FILTER_SANITIZE_SPECIAL_CHARS);
         $length = strlen($parsed);
-        if ($length < 4 || $length >= 12) {
+        if ($length < 4 || $length >= 20) {
             return false;
         } else {
             return true;

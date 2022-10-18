@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Infra\Presenters;
 
-use App\Application\UseCase\saveNews\OutputBoundaryDTO;
+use App\Application\UseCase\saveNews\OutputBoundary;
 
-class NewsOutput implements OutputBoundaryDTO
+class NewsOutput implements OutputBoundary
 {
     private string $article;
     private string $author;

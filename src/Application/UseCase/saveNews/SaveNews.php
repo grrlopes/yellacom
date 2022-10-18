@@ -8,7 +8,7 @@ use App\Domain\Entities\News;
 use App\Domain\Repositories\INewsRepository;
 use App\Infra\Presenters\NewsOutput;
 
-final class SaveNews implements InputBoundaryDTO
+final class SaveNews implements InputBoundary
 {
     private INewsRepository $repository;
 
@@ -17,7 +17,7 @@ final class SaveNews implements InputBoundaryDTO
         $this->repository = $repository;
     }
 
-    public function execute(News $news): OutputBoundaryDTO
+    public function execute(News $news): OutputBoundary
     {
         $create = $this->repository->saveNews(
             array(

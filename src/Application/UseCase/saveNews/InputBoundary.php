@@ -6,7 +6,7 @@ namespace App\Application\UseCase\saveNews;
 
 use App\Domain\Entities\News;
 
-interface InputBoundaryDTO
+interface InputBoundary
 {
     public function execute(News $new);
 }

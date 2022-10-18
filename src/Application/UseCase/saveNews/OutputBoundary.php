@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Application\UseCase\saveNews;
 
-interface OutputBoundaryDTO
+interface OutputBoundary
 {
     public function getArticle(): string;
 

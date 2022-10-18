@@ -6,6 +6,7 @@ namespace App\Application\UseCase\saveNews;
 
 use App\Domain\Entities\News;
 use App\Domain\Repositories\INewsRepository;
+use App\Infra\Presenters\NewsOutput;
 
 final class SaveNews implements InputBoundaryDTO
 {
@@ -16,7 +17,7 @@ final class SaveNews implements InputBoundaryDTO
         $this->repository = $repository;
     }
 
-    public function execute(News $news): string
+    public function execute(News $news): OutputBoundaryDTO
     {
         $create = $this->repository->saveNews(
             array(
@@ -26,7 +27,14 @@ final class SaveNews implements InputBoundaryDTO
               "datetime" => (string)$news->getDatetime(),
             )
         );
-        echo $create->getAuthor();
-        return $create->getAuthor();
+
+        $output = new NewsOutput(
+            $create->getArticle(),
+            $create->getAuthor(),
+            $create->getDatetime(),
+            $create->getTitle(),
+        );
+
+        return $output;
     }
 }

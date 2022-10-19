@@ -17,7 +17,9 @@
   },
   "minimum-stability": "dev",
   "require": {
-    "php": "8.1.11"
+    "php": "8.1.11",
+    "slim/slim": "4.*",
+    "slim/psr7": "dev-master"
   },
   "autoload": {
     "psr-4": {

@@ -41,7 +41,7 @@ final class News
     /**
      * @param string $title
      */
-    public function setTitle(Name $title): self
+    public function setTitle(string $title): self
     {
         $this->title = $title;
         return $this;

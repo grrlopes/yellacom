@@ -19,7 +19,8 @@
   "require": {
     "php": "8.1.11",
     "slim/slim": "4.*",
-    "slim/psr7": "dev-master"
+    "slim/psr7": "dev-master",
+    "guzzlehttp/guzzle": "7.5.x-dev"
   },
   "autoload": {
     "psr-4": {

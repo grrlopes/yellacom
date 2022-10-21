@@ -9,7 +9,7 @@ use App\Domain\Entities\News;
 use App\Domain\Repositories\INewsRepository;
 use App\Infra\Repositories\WCouchdb\NewsRepository;
 
-final class ExportCategory
+final class ExportNews
 {
     private SaveNews $useCase;
     private INewsRepository $repository;
@@ -25,7 +25,5 @@ final class ExportCategory
     public function handler()
     {
         $data = $this->useCase->execute($this->news);
-
-        echo $data->getAuthor();
     }
 }

@@ -5,15 +5,16 @@ declare(strict_types=1);
 namespace App\Infra\Presenters;
 
 use App\Application\UseCase\saveNews\OutputBoundary;
+use App\Domain\Validator\Name;
 
 class NewsOutput implements OutputBoundary
 {
     private string $article;
-    private string $author;
+    private Name $author;
     private string $title;
     private string $datetime;
 
-    public function __construct(string $article, string $author, string $title, string $datetime)
+    public function __construct(string $article, Name $author, string $title, string $datetime)
     {
         $this->article = $article;
         $this->author = $author;
@@ -26,7 +27,7 @@ class NewsOutput implements OutputBoundary
         return $this->article;
     }
 
-    public function getAuthor(): string
+    public function getAuthor(): Name
     {
         return $this->author;
     }

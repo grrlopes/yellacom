@@ -21,7 +21,7 @@ final class SaveNews implements InputBoundary
     {
         $create = $this->repository->saveNews(
             array(
-              "author" => (string)$news->getAuthor(),
+              "author" => $news->getAuthor(),
               "title" => (string)$news->getTitle(),
               "article" => (string)$news->getArticle(),
               "datetime" => (string)$news->getDatetime(),
@@ -31,8 +31,8 @@ final class SaveNews implements InputBoundary
         $output = new NewsOutput(
             $create->getArticle(),
             $create->getAuthor(),
-            $create->getDatetime(),
             $create->getTitle(),
+            $create->getDatetime(),
         );
 
         return $output;

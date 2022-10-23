@@ -10,16 +10,20 @@ use App\Domain\Validator\Name;
 class NewsOutput implements OutputBoundary
 {
     private string $article;
-    private Name $author;
     private string $title;
     private string $datetime;
+    private array $message;
 
-    public function __construct(string $article, Name $author, string $title, string $datetime)
-    {
+    public function __construct(
+        string $article = null,
+        string $title = null,
+        string $datetime = null,
+        array $message
+    ) {
         $this->article = $article;
-        $this->author = $author;
         $this->title = $title;
         $this->datetime = $datetime;
+        $this->message = $message;
     }
 
     public function getArticle(): string
@@ -40,5 +44,10 @@ class NewsOutput implements OutputBoundary
     public function getDateTime(): string
     {
         return $this->datetime;
+    }
+
+    public function getMessage(): array
+    {
+        return $this->message;
     }
 }

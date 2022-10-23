@@ -22,8 +22,10 @@ final class ExportNews
         $this->news = $news;
     }
 
-    public function handler()
+    public function handler(): array
     {
         $data = $this->useCase->execute($this->news);
+
+        return $data->getMessage();
     }
 }

@@ -27,12 +27,16 @@ class Conn
         return $con;
     }
 
-    public function credencial(): array
+    public function credencial(array $data = []): array
     {
-        return array(
-          "auth" => array(
-            $this->user, $this->pass
-          )
-        );
+        $value = [
+          "auth" => [$this->user, $this->pass],
+        ];
+
+        if (count($data) > 0) {
+            $value = array_merge($value, $data);
+        }
+
+        return $value;
     }
 }

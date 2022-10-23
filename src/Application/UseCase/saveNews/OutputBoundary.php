@@ -15,4 +15,6 @@ interface OutputBoundary
     public function getTitle(): string;
 
     public function getDateTime(): string;
+
+    public function getMessage(): array;
 }

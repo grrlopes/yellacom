@@ -12,9 +12,10 @@ final class News
     private string $title;
     private string $datetime;
     private string $article;
+    private array $message;
 
     /**
-     * @return string
+     * @return Name
      */
     public function getAuthor(): Name
     {
@@ -78,6 +79,23 @@ final class News
     public function setArticle(string $article): self
     {
         $this->article = $article;
+        return $this;
+    }
+
+    /**
+     * @return array $message
+     */
+    public function getMessage(): array
+    {
+        return $this->message;
+    }
+
+    /**
+     * @param string $article
+     */
+    public function setMessage(array $message): self
+    {
+        $this->message = $message;
         return $this;
     }
 }

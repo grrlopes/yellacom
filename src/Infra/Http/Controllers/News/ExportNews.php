@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Infra\Http\Controllers;
+namespace App\Infra\Http\Controllers\News;
 
 use App\Application\UseCase\saveNews\SaveNews;
 use App\Domain\Entities\News;

@@ -6,7 +6,7 @@ use Slim\Factory\AppFactory;
 
 use App\Domain\Entities\News;
 use App\Domain\Validator\Name;
-use App\Infra\Http\Controllers\ExportNews;
+use App\Infra\Http\Controllers\News\ExportNews;
 use App\Infra\Http\Controllers\News\ExportAllNews;
 
 require_once __DIR__ . '/../vendor/autoload.php';

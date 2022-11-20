@@ -6,6 +6,7 @@ namespace App\Infra\Repositories\WCouchdb;
 
 use App\Domain\Entities\News;
 use App\Domain\Repositories\INewsRepository;
+use App\Domain\Validator\Name;
 use App\Infra\Repositories\WCouchdb\Persistor\Conn;
 
 final class NewsRepository implements INewsRepository
@@ -36,19 +37,20 @@ final class NewsRepository implements INewsRepository
         return $data;
     }
 
-    public function listAllNews(): News
+    public function listAllNews(): Array
     {
-        $data = new News();
         $load = $this->Persistor->credencial([
           "headers" => ["Content-Type" => "application/json"]
         ]);
 
         $resp = $this->Persistor->getConn()->get(
-            "_all_docs?include_docs=true",
+            "_design/news/_view/allnews",
             $load
         );
 
         $parsed = $resp->getBody()->getContents();
+
+        $data = json_decode($parsed, true);
 
         return $data;
     }

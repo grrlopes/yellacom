@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Application\UseCase\listAllNews;
 
 use App\Domain\Repositories\INewsRepository;
+use Exception;
 
 final class ListAllNews implements OutputBoundary
 {
@@ -17,15 +18,22 @@ final class ListAllNews implements OutputBoundary
         $this->datas = array();
     }
 
-    public function execute()
+    public function execute(): array
     {
-        $create = $this->repository->listAllNews();
-        $this->output($create);
+        try {
+            $create = $this->repository->listAllNews();
+            if (empty($create["rows"])) {
+                throw new Exception("There is no data!");
+            }
+            return $this->output($create);
+        } catch (\Throwable $e) {
+            return ["message" => $e->getMessage()];
+        }
     }
 
     public function output(array $value): array
     {
-        foreach ($value["rows"] as $key => $data) {
+        foreach ($value["rows"] as $data) {
             array_push($this->datas, $data["value"]);
         }
 

@@ -47,8 +47,12 @@ $app->post("/news", function (Request $request, Response $response) {
 $app->get('/allnews', function (Request $request, Response $response) {
     try {
         $export = new ExportAllNews();
-        $export->handler();
-        return $response;
+        $resp = $export->handler();
+
+        $data = json_encode($resp);
+        $response->getBody()->write($data);
+        return $response
+                  ->withheader('content-type', 'application/json');
     } catch (\Throwable $e) {
         $response->getBody()->write($e->getMessage());
         return $response->withHeader('Content-Type', 'application/json')->withStatus(400);

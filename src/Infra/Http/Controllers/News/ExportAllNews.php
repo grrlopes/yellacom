@@ -21,8 +21,9 @@ final class ExportAllNews
         $this->useCase = new ListAllNews($this->repository);
     }
 
-    public function handler()
+    public function handler(): array
     {
         $data = $this->useCase->execute();
+        return $data;
     }
 }

@@ -6,7 +6,7 @@ namespace App\Application\UseCase\listAllNews;
 
 use App\Domain\Validator\Name;
 
-interface OutputBoundary
+interface Output
 {
     public function getArticle(): string;
 
@@ -17,4 +17,8 @@ interface OutputBoundary
     public function getDateTime(): string;
 
     public function getMessage(): array;
+}
+
+interface OutputBoundary{
+    public function output(array $data): array;
 }

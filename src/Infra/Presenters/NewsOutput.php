@@ -11,18 +11,21 @@ class NewsOutput implements OutputBoundary
 {
     private string $article;
     private string $title;
-    private string $datetime;
+    private string $category;
+    private string $create_at;
     private array $message;
 
     public function __construct(
         string $article = null,
         string $title = null,
-        string $datetime = null,
+        string $category = null,
+        string $create_at = null,
         array $message
     ) {
         $this->article = $article;
         $this->title = $title;
-        $this->datetime = $datetime;
+        $this->category = $category;
+        $this->create_at = $create_at;
         $this->message = $message;
     }
 
@@ -41,9 +44,14 @@ class NewsOutput implements OutputBoundary
         return $this->title;
     }
 
-    public function getDateTime(): string
+    public function getCategory(): string
     {
-        return $this->datetime;
+        return $this->category;
+    }
+
+    public function getCreate_at(): string
+    {
+        return $this->create_at;
     }
 
     public function getMessage(): array

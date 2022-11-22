@@ -23,12 +23,14 @@ final class SaveNews implements InputBoundary
             array(
               "author" => (string)$news->getAuthor(),
               "title" => (string)$news->getTitle(),
+              "category" => (string)$news->getCategory(),
               "article" => (string)$news->getArticle(),
-              "datetime" => (string)$news->getDatetime(),
+              "create_at" => (string)$news->getCreate_at(),
             )
         );
 
         $output = new NewsOutput(
+            "",
             "",
             "",
             "",

@@ -23,8 +23,9 @@ $app->post("/news", function (Request $request, Response $response) {
 
         $news->setArticle($parse["article"]);
         $news->setAuthor(new Name($parse["author"]));
-        $news->setDatetime($parse["datetime"]);
+        $news->setCreate_at($parse["create_at"]);
         $news->setTitle($parse["title"]);
+        $news->setCategory($parse["category"]);
 
         $export = new ExportNews($news);
         $resp = $export->handler();
@@ -55,7 +56,9 @@ $app->get('/allnews', function (Request $request, Response $response) {
                   ->withheader('content-type', 'application/json');
     } catch (\Throwable $e) {
         $response->getBody()->write($e->getMessage());
-        return $response->withHeader('Content-Type', 'application/json')->withStatus(400);
+        return $response
+                  ->withHeader('Content-Type', 'application/json')
+                  ->withStatus(400);
     }
 });
 

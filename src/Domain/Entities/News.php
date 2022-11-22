@@ -10,8 +10,9 @@ final class News
 {
     private Name $author;
     private string $title;
-    private string $datetime;
+    private string $create_at;
     private string $article;
+    private string $category;
     private array $message;
 
     /**
@@ -49,19 +50,19 @@ final class News
     }
 
     /**
-     * @return string $datetime
+     * @return string $create_at
      */
-    public function getDatetime(): string
+    public function getCreate_at(): string
     {
-        return $this->datetime;
+        return $this->create_at;
     }
 
     /**
-     * @param string $datetime
+     * @param string $create_at
      */
-    public function setDatetime(string $datetime): self
+    public function setCreate_at(string $create_at): self
     {
-        $this->datetime = $datetime;
+        $this->create_at = $create_at;
         return $this;
     }
 
@@ -98,4 +99,22 @@ final class News
         $this->message = $message;
         return $this;
     }
+
+    /**
+     * @return string $category
+     */
+    public function getCategory(): string
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param string $category
+     */
+    public function setCategory(string $category): self
+    {
+        $this->category = $category;
+        return $this;
+    }
+
 }

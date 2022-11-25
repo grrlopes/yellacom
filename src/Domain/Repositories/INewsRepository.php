@@ -10,4 +10,5 @@ interface INewsRepository
 {
     public function saveNews(array $news): News;
     public function listAllNews(): array;
+    public function removeNews(string $id): News;
 }

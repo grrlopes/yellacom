@@ -36,16 +36,15 @@ final class NewsRepository implements INewsRepository
         return $data;
     }
 
-    public function removeNews(string $id): News
+    public function removeNews(string $ids): News
     {
         $data = new News();
         $load = $this->Persistor->credencial([
           "headers" => ["Content-Type" => "application/json"],
-          "body" => json_encode($id)
         ]);
 
         $resp = $this->Persistor->getConn()->delete(
-            "",
+            $ids,
             $load
         );
 

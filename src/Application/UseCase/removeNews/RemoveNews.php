@@ -16,9 +16,11 @@ final class RemoveNews implements InputBoundary
         $this->repository = $repository;
     }
 
-    public function execute(string $id): OutputBoundary
+    public function execute(string $id, string $rev): OutputBoundary
     {
-        $create = $this->repository->removeNews($id);
+        $ids = $id."?rev=".$rev;
+
+        $create = $this->repository->removeNews($ids);
 
         $output = new RemoveOutput(
             $create->getMessage(),

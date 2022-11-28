@@ -6,5 +6,5 @@ namespace App\Application\UseCase\removeNews;
 
 interface InputBoundary
 {
-    public function execute(string $id);
+    public function execute(string $id, string $rev);
 }

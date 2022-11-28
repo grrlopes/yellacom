@@ -8,6 +8,7 @@ use App\Domain\Entities\News;
 use App\Domain\Validator\Name;
 use App\Infra\Http\Controllers\News\ExportNews;
 use App\Infra\Http\Controllers\News\ExportAllNews;
+use App\Infra\Http\Controllers\News\ExportRemove;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -48,6 +49,26 @@ $app->post("/news", function (Request $request, Response $response) {
 $app->get('/allnews', function (Request $request, Response $response) {
     try {
         $export = new ExportAllNews();
+        $resp = $export->handler();
+
+        $data = json_encode($resp);
+        $response->getBody()->write($data);
+        return $response
+                  ->withheader('content-type', 'application/json');
+    } catch (\Throwable $e) {
+        $response->getBody()->write($e->getMessage());
+        return $response
+                  ->withHeader('Content-Type', 'application/json')
+                  ->withStatus(400);
+    }
+});
+
+$app->delete('/delnews', function (Request $request, Response $response) {
+    try {
+        $params = $request->getBody();
+        $parse = json_decode($params, true);
+
+        $export = new ExportRemove($parse["id"], $parse["rev"]);
         $resp = $export->handler();
 
         $data = json_encode($resp);

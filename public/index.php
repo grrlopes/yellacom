@@ -90,9 +90,10 @@ $app->put('/updatenews', function (Request $request, Response $response) {
         $params = $request->getBody();
         $parse = json_decode($params, true);
 
+        $news->setId($parse["id"]);
+        $news->setRev($parse["rev"]);
         $news->setArticle($parse["article"]);
         $news->setAuthor(new Name($parse["author"]));
-        $news->setCreate_at($parse["create_at"]);
         $news->setTitle($parse["title"]);
         $news->setCategory($parse["category"]);
 

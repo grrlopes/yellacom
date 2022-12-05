@@ -6,7 +6,7 @@ namespace App\Application\UseCase\updateNews;
 
 use App\Domain\Entities\News;
 use App\Domain\Repositories\INewsRepository;
-use App\Infra\Presenters\NewsOutput;
+use App\Infra\Presenters\UpdateOutput;
 
 final class UpdateNews implements InputBoundary
 {
@@ -19,22 +19,19 @@ final class UpdateNews implements InputBoundary
 
     public function execute(News $news): OutputBoundary
     {
-        $create = $this->repository->saveNews(
+        $update = $this->repository->updateNews(
             array(
+              "_id" => (string)$news->getId(),
+              "_rev" => (string)$news->getRev(),
               "author" => (string)$news->getAuthor(),
               "title" => (string)$news->getTitle(),
               "category" => (string)$news->getCategory(),
               "article" => (string)$news->getArticle(),
-              "create_at" => (string)$news->getCreate_at(),
             )
         );
 
-        $output = new NewsOutput(
-            "",
-            "",
-            "",
-            "",
-            $create->getMessage(),
+        $output = new UpdateOutput(
+            $update->getMessage(),
         );
 
         return $output;

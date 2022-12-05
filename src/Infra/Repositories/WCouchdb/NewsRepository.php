@@ -36,6 +36,23 @@ final class NewsRepository implements INewsRepository
         return $data;
     }
 
+    public function updateNews(array $news): News
+    {
+        $data = new News();
+        $load = $this->Persistor->credencial([
+          "headers" => ["Content-Type" => "application/json"],
+          "body" => json_encode($news)
+        ]);
+
+        $resp = $this->Persistor->getConn()->request("PUT", $news["_id"], $load);
+
+        $parsed = $resp->getBody()->getContents();
+
+        $data->setMessage(json_decode($parsed, true));
+
+        return $data;
+    }
+
     public function removeNews(string $ids): News
     {
         $data = new News();

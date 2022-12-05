@@ -9,6 +9,8 @@ use App\Domain\Validator\Name;
 final class News
 {
     private Name $author;
+    private string $id;
+    private string $rev;
     private string $title;
     private string $create_at;
     private string $article;
@@ -29,6 +31,40 @@ final class News
     public function setAuthor(Name $author): self
     {
         $this->author = $author;
+        return $this;
+    }
+
+    /**
+     * @return id
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string $id
+     */
+    public function setId(string $id): self
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return rev
+     */
+    public function getRev(): string
+    {
+        return $this->rev;
+    }
+
+    /**
+     * @param string $rev
+     */
+    public function setRev(string $id): self
+    {
+        $this->rev = $id;
         return $this;
     }
 
@@ -116,5 +152,4 @@ final class News
         $this->category = $category;
         return $this;
     }
-
 }
